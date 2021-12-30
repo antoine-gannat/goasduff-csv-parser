@@ -16,18 +16,19 @@ function createFileToDownload(content: string) {
 export default function App(): JSX.Element {
   const [file, setFile] = React.useState<File | null>(null);
   const [parsedFile, setParsedFile] = React.useState<string | null>(null);
+  const styles = useStyles();
   const onFileChange = React.useCallback((ev) => {
     const file = ev.target.files[0];
     setFile(file);
     parseFile(file).then(setParsedFile);
   }, []);
-  const styles = useStyles();
+
   return (
     <main className={styles.root}>
       <h1 className={styles.title}>Goasduff CSV parser</h1>
       <label htmlFor="file-input">
         <div id="file-selector" className={styles.fileUploadZone}>
-          {file ? file.name : "Click or Drop files here.."}
+          {file ? file.name : "Click here to select a file.."}
         </div>
       </label>
       {/* The input is hidden so that we can style something better above */}
