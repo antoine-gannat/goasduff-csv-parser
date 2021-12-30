@@ -30,6 +30,9 @@ function readFile(file: File): Promise<string> {
 }
 
 function parseVaccine(vaccine: string): string {
+  if (!vaccine) {
+    return "";
+  }
   // the vaccine often contains un-necessary '+', remove them
   for (let i = vaccine.length - 1; i >= 0; i--) {
     if (vaccine[i] !== "+" && vaccine[i] !== " ") {
@@ -64,15 +67,15 @@ function parseRawFile(fileContent: string): IRecipient[] {
       ] = line.split(",");
 
       recipients.push({
-        quantities: [quantity.trim()],
-        races: [race.trim()],
-        phoneNumber: phoneNumber.trim(),
+        quantities: [quantity?.trim()],
+        races: [race?.trim()],
+        phoneNumber: phoneNumber?.trim(),
         vaccines: [parseVaccine(vaccine)],
-        buildings: [buildingNumber.trim()],
-        address: address.trim(),
-        hatchDate: hatchDate.trim(),
-        deliveryTime: deliveryTime.trim(),
-        name: name.trim(),
+        buildings: [buildingNumber?.trim()],
+        address: address?.trim(),
+        hatchDate: hatchDate?.trim(),
+        deliveryTime: deliveryTime?.trim(),
+        name: name?.trim(),
       });
     });
   return recipients;
@@ -130,7 +133,6 @@ function convertToCSV(recipients: IRecipient[]): string {
 
 export async function parseFile(file: File): Promise<string> {
   const fileContent = await readFile(file);
-  console.log(fileContent);
   const recipients = mergeRecipients(parseRawFile(fileContent));
 
   return convertToCSV(recipients);
