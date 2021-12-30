@@ -120,6 +120,10 @@ function convertToCSV(recipients: IRecipient[]): string {
     "Numero;Quantite_Commandee;Croisement;Vaccin cv;Numero_Batiment;Adresse_1;Date_Eclosion;horaire;Nom;",
   ];
   recipients.forEach((r) => {
+    // quit if phone number is not found
+    if (!r.phoneNumber) {
+      return;
+    }
     result.push(
       `${r.phoneNumber};${r.quantities.join(" + ")};${r.races.join(
         ","
