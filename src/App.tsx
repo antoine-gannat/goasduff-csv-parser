@@ -20,7 +20,12 @@ export default function App(): JSX.Element {
   const onFileChange = React.useCallback((ev) => {
     const file = ev.target.files[0];
     setFile(file);
-    parseFile(file).then(setParsedFile);
+    try {
+      parseFile(file).then(setParsedFile);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to parse the file, please verify it is valid.");
+    }
   }, []);
 
   return (
