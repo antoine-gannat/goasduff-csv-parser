@@ -118,9 +118,9 @@ function convertToCSV(recipients: IRecipient[]): string {
   ];
   recipients.forEach((r) => {
     result.push(
-      `${r.phoneNumber};${r.quantities.join(",")};${r.races.join(
+      `${r.phoneNumber};${r.quantities.join(" + ")};${r.races.join(
         ","
-      )};${r.vaccines.join(",")};${r.buildings.join(",")};${r.address};${
+      )};${r.vaccines.join(" + ")};${r.buildings.join(" + ")};${r.address};${
         r.hatchDate
       };${r.deliveryTime};${r.name}`
     );
