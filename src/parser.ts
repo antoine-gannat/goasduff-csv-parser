@@ -69,7 +69,7 @@ function parseRawFile(fileContent: string): IRecipient[] {
       recipients.push({
         quantities: [quantity?.trim()],
         races: [race?.trim()],
-        phoneNumber: phoneNumber?.trim(),
+        phoneNumber: phoneNumber?.trim().replaceAll(" ", ""),
         vaccines: [parseVaccine(vaccine)],
         buildings: [buildingNumber?.trim()],
         address: address?.trim(),
