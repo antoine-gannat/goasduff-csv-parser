@@ -64,7 +64,7 @@ function parseRawFile(fileContent: string): IRecipient[] {
         hatchDate,
         deliveryTime,
         name,
-      ] = line.split(",");
+      ] = line.split(";");
 
       recipients.push({
         quantities: [quantity?.trim()],
@@ -117,7 +117,7 @@ function mergeRecipients(recipients: IRecipient[]): IRecipient[] {
 
 function convertToCSV(recipients: IRecipient[]): string {
   let result: string[] = [
-    "Expr1;Quantite_Commandee;Croisement;Vaccin cv;Numero_Batiment;Adresse_1;Date_Eclosion;horaire;Nom;",
+    "Numero;Quantite_Commandee;Croisement;Vaccin cv;Numero_Batiment;Adresse_1;Date_Eclosion;horaire;Nom;",
   ];
   recipients.forEach((r) => {
     result.push(
