@@ -2,6 +2,7 @@
   "name": "goasduff-csv-parser",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://antoine-gannat.github.io/goasduff-csv-parser/",
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-beta.4",
     "@types/node": "^16.11.17",
