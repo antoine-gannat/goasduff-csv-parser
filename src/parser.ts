@@ -104,10 +104,7 @@ function mergeRecipients(recipients: IRecipient[]): IRecipient[] {
           ...recipient.vaccines,
           ...r.vaccines,
         ]);
-        recipient.quantities = removeDuplicates([
-          ...recipient.quantities,
-          ...r.quantities,
-        ]);
+        recipient.quantities = [...recipient.quantities, ...r.quantities];
         recipient.races = removeDuplicates([...recipient.races, ...r.races]);
       });
     mergedRecipients.push(recipient);
