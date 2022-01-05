@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/goasduff-csv-parser/static/js/main.63e912b1.js",
+    "main.js": "/goasduff-csv-parser/static/js/main.a3482ebe.js",
     "index.html": "/goasduff-csv-parser/index.html",
-    "main.63e912b1.js.map": "/goasduff-csv-parser/static/js/main.63e912b1.js.map"
+    "main.a3482ebe.js.map": "/goasduff-csv-parser/static/js/main.a3482ebe.js.map"
   },
   "entrypoints": [
-    "static/js/main.63e912b1.js"
+    "static/js/main.a3482ebe.js"
   ]
 }
