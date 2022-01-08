@@ -135,7 +135,7 @@ function convertToCSV(recipients: IRecipient[]): string {
       )};${r.vaccines.join(" + ")};${r.buildings.join(" + ")};${
         r.address
       };${r.deliveryDate.join(" puis le ")};${r.deliveryTime.join(
-        " puis le "
+        " puis à "
       )};${r.name}`
     );
   });
