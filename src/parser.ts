@@ -6,8 +6,8 @@ interface IRecipient {
   vaccines: string[];
   address: string;
   buildings: string[];
-  hatchDate: string;
-  deliveryTime: string;
+  deliveryDate: string[];
+  deliveryTime: string[];
 }
 function removeDuplicates<T>(arr: Array<T>): Array<T> {
   return arr.filter(function (value, index, array) {
@@ -61,7 +61,7 @@ function parseRawFile(fileContent: string): IRecipient[] {
         vaccine,
         buildingNumber,
         address,
-        hatchDate,
+        deliveryDate,
         deliveryTime,
         name,
       ] = line.split(";");
@@ -73,8 +73,8 @@ function parseRawFile(fileContent: string): IRecipient[] {
         vaccines: [parseVaccine(vaccine)],
         buildings: [buildingNumber?.trim()],
         address: address?.trim(),
-        hatchDate: hatchDate?.trim(),
-        deliveryTime: deliveryTime?.trim(),
+        deliveryDate: [deliveryDate?.trim()],
+        deliveryTime: [deliveryTime?.trim()],
         name: name?.trim(),
       });
     });
@@ -106,6 +106,14 @@ function mergeRecipients(recipients: IRecipient[]): IRecipient[] {
         ]);
         recipient.quantities = [...recipient.quantities, ...r.quantities];
         recipient.races = removeDuplicates([...recipient.races, ...r.races]);
+        recipient.deliveryDate = removeDuplicates([
+          ...recipient.deliveryDate,
+          ...r.deliveryDate,
+        ]);
+        recipient.deliveryTime = removeDuplicates([
+          ...recipient.deliveryTime,
+          ...r.deliveryTime,
+        ]);
       });
     mergedRecipients.push(recipient);
   });
@@ -124,9 +132,11 @@ function convertToCSV(recipients: IRecipient[]): string {
     result.push(
       `${r.phoneNumber};${r.quantities.join(" + ")};${r.races.join(
         ","
-      )};${r.vaccines.join(" + ")};${r.buildings.join(" + ")};${r.address};${
-        r.hatchDate
-      };${r.deliveryTime};${r.name}`
+      )};${r.vaccines.join(" + ")};${r.buildings.join(" + ")};${
+        r.address
+      };${r.deliveryDate.join(" puis le ")};${r.deliveryTime.join(
+        " puis le "
+      )};${r.name}`
     );
   });
   return result.join("\n");
