@@ -131,7 +131,7 @@ function convertToCSV(recipients: IRecipient[]): string {
     }
     result.push(
       `${r.phoneNumber};${r.quantities.join(" + ")};${r.races.join(
-        ","
+        " + "
       )};${r.vaccines.join(" + ")};${r.buildings.join(" + ")};${
         r.address
       };${r.deliveryDate.join(" puis le ")};${r.deliveryTime.join(
