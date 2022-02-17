@@ -90,11 +90,7 @@ function mergeRecipients(recipients: IRecipient[]): IRecipient[] {
     }
     // get all recipients with that phone number
     recipients
-      .filter(
-        (r) =>
-          r.phoneNumber === recipient.phoneNumber &&
-          r.buildings[0] !== recipient.buildings[0]
-      )
+      .filter((r) => r.phoneNumber === recipient.phoneNumber)
       .forEach((r) => {
         recipient.buildings = removeDuplicates([
           ...recipient.buildings,
